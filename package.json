@@ -1,0 +1,37 @@
+{
+  "name": "sample-project",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "build": "NODE_ENV=production jsio-webpack",
+    "watch": "jsio-webpack --watch --devtool eval-cheap-module-source-map",
+    "serve": "jsio-webpack serve"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jsio-webpack": "git+https://github.com/jsio-private/jsio-webpack",
+    "material-ui": "^0.16.6",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "jsio",
+      "plugin:react/recommended"
+    ],
+    "plugins": [
+      "react"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
+  }
+}
