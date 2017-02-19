@@ -7,18 +7,21 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-import GlobalStateComponent from './GlobalStateComponent';
-import LocalStateComponent from './LocalStateComponent';
+import ChatDisplay from './ChatDisplay';
+import ChatInput from './ChatInput';
+
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:8081'); // connect to server
 
 class App extends React.Component {
   render () {
     return (
       <div className='app-cmpt'>
-        Textfield component using global state:
-        <GlobalStateComponent />
-        <br /><br /><br />
-        Textfield component using local state:
-        <LocalStateComponent />
+        chat display: shows messages
+        <ChatDisplay socket={socket} />
+
+        <ChatInput socket={socket} />
       </div>
     );
   }
