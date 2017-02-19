@@ -18,9 +18,9 @@ class ChatInput extends React.Component {
     return (
       <div>
         <TextField
-          hintText="Hint Text"
+          hintText='Hint Text'
         />
-        <FlatButton label="Submit" />
+        <FlatButton label='Submit' />
       </div>
     );
   }
