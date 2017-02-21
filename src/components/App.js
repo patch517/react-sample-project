@@ -3,22 +3,21 @@ import './App.styl';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import ChatDisplay from './ChatDisplay';
+
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-injectTapEventPlugin();
+import io from 'socket.io-client';
 
-import GlobalStateComponent from './GlobalStateComponent';
-import LocalStateComponent from './LocalStateComponent';
+injectTapEventPlugin();
 
 class App extends React.Component {
   render () {
     return (
-      <div className='app-cmpt'>
-        Textfield component using global state:
-        <GlobalStateComponent />
-        <br /><br /><br />
-        Textfield component using local state:
-        <LocalStateComponent />
+        <div className='app-cmpt'>
+          ass
+          
       </div>
     );
   }
