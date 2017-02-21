@@ -3,12 +3,7 @@ import './App.styl';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ChatDisplay from './ChatDisplay';
-
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
-import io from 'socket.io-client';
 
 injectTapEventPlugin();
 
@@ -16,8 +11,7 @@ class App extends React.Component {
   render () {
     return (
         <div className='app-cmpt'>
-          ass
-          
+          assfuck
       </div>
     );
   }
