@@ -1,18 +1,33 @@
-export const SET_TEXT = 'auth/SET_TEXT';
+export const ADD_MESSAGES = 'auth/ADD_MESSAGES';
 
 const DEFAULT_STATE = {
-  text: ''
+  text: '',
+  messages: [
+    {
+      'from': 'person',
+      'time': 0,
+      'content': 'hi'
+    },
+    {
+      'from': 'man',
+      'time': 0,
+      'content': 'fuck off'
+    }
+  ]
 };
 
-export const setText = (dat) => {
-  return { type: SET_TEXT, dat: dat }
+export const addMessages = (dat) => {
+  return { type: ADD_MESSAGES, messages: dat }
 }
 
 export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
-    case SET_TEXT:
+    case ADD_MESSAGES:
       return Object.assign({}, state, {
-        text: action.dat
+        messages: [
+          ...state.messages,
+          ...action.messages
+        ]
       });
   }
   return state;

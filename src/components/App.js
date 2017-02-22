@@ -10,12 +10,16 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:8081');
+
 class App extends React.Component {
   render () {
     return (
       <div className='app-cmpt'>
-        <ChatDisplay/>
-        <ChatArea/>
+        <ChatDisplay socket={socket}/>
+        <ChatArea socket={socket}/>
       </div>
     );
   }
