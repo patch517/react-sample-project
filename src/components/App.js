@@ -3,6 +3,9 @@ import './App.styl';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import ChatArea from './ChatArea';
+import ChatDisplay from './ChatDisplay';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
@@ -10,8 +13,9 @@ injectTapEventPlugin();
 class App extends React.Component {
   render () {
     return (
-        <div className='app-cmpt'>
-          assfuck
+      <div className='app-cmpt'>
+        <ChatDisplay/>
+        <ChatArea/>
       </div>
     );
   }
