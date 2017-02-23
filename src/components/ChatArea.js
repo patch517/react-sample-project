@@ -46,7 +46,7 @@ class ChatArea extends React.Component {
           onChange={this.onTextFieldChange.bind(this)}
           value={this.state.textFieldMsg}
           onKeyPress={this.handleKeyPress.bind(this)} />
-        <FlatButton style={{'width': '20%'}}
+        <FlatButton style={{'width': '15%', 'left':'30px', 'top':'4px'}}
           name='chatBtn'
           label='Send'
           onClick={this.sendMessage.bind(this)} />
