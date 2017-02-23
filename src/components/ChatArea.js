@@ -27,7 +27,7 @@ class ChatArea extends React.Component {
     }
   }
   sendMessage (event) {
-    if (this.state.textFieldMsg !== '') {
+    if (this.state.textFieldMsg) {
       this.props.socket.emit('send message', {
         room: 'main',
         rawMessage: this.state.textFieldMsg
