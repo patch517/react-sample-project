@@ -29,7 +29,7 @@ class ChatDisplay extends React.Component {
   }
 
   // http://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
-  timeSince (date) { //make timesince show 'now' or minutes/hours
+  timeSince (date) { // make timesince show 'now' or minutes/hours + update every minute
     var seconds = Math.floor((new Date() - date) / 1000);
 
     var interval = Math.floor(seconds / 31536000);
@@ -53,7 +53,7 @@ class ChatDisplay extends React.Component {
     if (interval > 1) {
       return interval + ' minutes';
     }
-    return Math.floor(seconds) + ' seconds';
+    return 'now';
   }
 }
 

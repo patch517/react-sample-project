@@ -21,8 +21,8 @@ class ChatArea extends React.Component {
       textFieldMsg: event.target.value
     });
   }
-  sendMessage (event) { //make only unless empty
-    if (this.state.textFieldMsg != '') {
+  sendMessage (event) {
+    if (this.state.textFieldMsg !== '') {
       this.props.socket.emit('send message', {
         room: 'main',
         rawMessage: this.state.textFieldMsg
@@ -35,7 +35,7 @@ class ChatArea extends React.Component {
   render () {
     return (
       <div className='chat-area'>
-        <TextField style={{'width': '80%'}} //make pressing enter in textfield click the button
+        <TextField style={{'width': '80%'}} // make pressing enter in textfield click the button
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}
