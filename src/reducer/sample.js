@@ -4,12 +4,12 @@ const DEFAULT_STATE = {
   text: '',
   messages: [
     {
-      'from': 'person',
       'time': 0,
+      'username': 'person',
       'content': 'hi'
     },
     {
-      'from': 'man',
+      'username': 'man',
       'time': 0,
       'content': 'fuck off'
     }
