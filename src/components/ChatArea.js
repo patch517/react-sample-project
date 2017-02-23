@@ -12,8 +12,8 @@ class ChatArea extends React.Component {
     this.state = {textFieldMsg: ''};
   }
   componentDidMount () {
-    this.props.socket.on('new message', function (msg) {
-      this.props.addMessages(msg.messages);
+    this.props.socket.on('new message', function (newMessages) {
+      this.props.addMessages(newMessages);
     }.bind(this));
   }
   onTextFieldChange (event) {
@@ -28,10 +28,7 @@ class ChatArea extends React.Component {
   }
   sendMessage (event) {
     if (this.state.textFieldMsg) {
-      this.props.socket.emit('send message', {
-        room: 'main',
-        rawMessage: this.state.textFieldMsg
-      });
+      this.props.socket.emit('send message', this.state.textFieldMsg);
     }
     this.setState({
       textFieldMsg: ''
@@ -40,7 +37,7 @@ class ChatArea extends React.Component {
   render () {
     return (
       <div className='chat-area'>
-        <TextField style={{'width': '80%', 'left':'8px'}} // make pressing enter in textfield click the button
+        <TextField style={{'width': '80%', 'left': '8px'}} // make pressing enter in textfield click the button
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}
@@ -56,14 +53,12 @@ class ChatArea extends React.Component {
 }
 
 ChatArea.propTypes = {
-  messages: React.PropTypes.object.isRequired,
   socket: React.PropTypes.object.isRequired,
   addMessages: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    messages: state.sample.messages
   };
 };
 
