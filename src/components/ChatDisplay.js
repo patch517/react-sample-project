@@ -7,7 +7,7 @@ class ChatDisplay extends React.Component {
 
     for (var key in this.props.messages) {
       msgs.push(
-        <div className='msg-parent'>
+        <div key={key} className='msg-parent'>
           <div className='msg-time'>{this.timeSince(this.props.messages[key].time)} </div>
           <div className='msg-user'>{this.props.messages[key].username}: </div>
           <div className='msg-content'>{this.props.messages[key].content}</div>
@@ -67,7 +67,7 @@ class ChatDisplay extends React.Component {
 }
 
 ChatDisplay.propTypes = {
-  messages: React.PropTypes.object.isRequired,
+  messages: React.PropTypes.array.isRequired,
   socket: React.PropTypes.object.isRequired
 };
 
@@ -78,6 +78,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  return {
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatDisplay);
