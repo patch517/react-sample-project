@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis|Open+Sans+Condensed:300')
 
+body
+  margin: 0
+  background-color: #121212
+
 .app-cmpt
   color: green
   font-family: 'Open Sans Condensed', sans-serif
@@ -7,18 +11,27 @@
 
 .chat-display
   background-color: #b3d9ff
-  border-radius: 10px
+  border-radius: 10px 10px 0px 0px
+  margin: 15px
+  margin-bottom: 0
   height:600px
   width:75%
+  max-width:75%
+  overflow-y: auto
+  overflow-x: hidden
+  word-wrap: break-word
 
 .chat-area
-  background-color:red
+  background-color: #454545
+  border-radius: 0px 0px 10px 10px
   position: relative
-  top:5px
+  margin: 15px
+  margin-top: 0
   width:75%
 
 .msg-parent
   font-family: 'Dosis', sans-serif
+  padding-left: 5px
 
 .msg-time 
   display: inline-block
@@ -35,6 +48,11 @@
   color: black
 
 .msg-content
-  display: inline
+  display: inline-block
+  vertical-align: text-top
+  padding-top: 15px
+  padding-left: 8px
   font-size: 12pt
+  width:75%
   color: black
+  word-wrap: break-word

@@ -21,6 +21,11 @@ class ChatArea extends React.Component {
       textFieldMsg: event.target.value
     });
   }
+  handleKeyPress (event) {
+    if (event.key === 'Enter') {
+      this.sendMessage();
+    }
+  }
   sendMessage (event) {
     if (this.state.textFieldMsg !== '') {
       this.props.socket.emit('send message', {
@@ -35,11 +40,12 @@ class ChatArea extends React.Component {
   render () {
     return (
       <div className='chat-area'>
-        <TextField style={{'width': '80%'}} // make pressing enter in textfield click the button
+        <TextField style={{'width': '80%', 'left':'8px'}} // make pressing enter in textfield click the button
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}
-          value={this.state.textFieldMsg}/>
+          value={this.state.textFieldMsg}
+          onKeyPress={this.handleKeyPress.bind(this)} />
         <FlatButton style={{'width': '20%'}}
           name='chatBtn'
           label='Send'

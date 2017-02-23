@@ -47,22 +47,19 @@ class ChatDisplay extends React.Component {
     interval = Math.floor(seconds / 86400);
     if (interval > 1) {
       return interval + ' days ago';
-    }
-    else if (interval >= 1) {
+    } else if (interval >= 1) {
       return interval + ' day ago'
     }
     interval = Math.floor(seconds / 3600);
     if (interval > 1) {
       return interval + ' hrs ago';
-    }
-    else if (interval >= 1) {
+    } else if (interval >= 1) {
       return interval + ' hr ago'
     }
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
       return interval + ' mins ago'
-    }
-    else if (interval >= 1) {
+    } else if (interval >= 1) {
       return interval + ' min ago'
     }
     return 'now';
