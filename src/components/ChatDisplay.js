@@ -25,7 +25,7 @@ class ChatDisplay extends React.Component {
   componentDidMount () {
     this.timer = setInterval(function () {
       this.forceUpdate();
-    }.bind(this), 30000);
+    }.bind(this), 1000);
   }
   componentWillUnmount () {
     clearInterval(this.timer);
@@ -48,13 +48,22 @@ class ChatDisplay extends React.Component {
     if (interval > 1) {
       return interval + ' days ago';
     }
+    else if (interval >= 1) {
+      return interval + ' day ago'
+    }
     interval = Math.floor(seconds / 3600);
     if (interval > 1) {
       return interval + ' hrs ago';
     }
+    else if (interval >= 1) {
+      return interval + ' hr ago'
+    }
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
-      return interval + ' min ago';
+      return interval + ' mins ago'
+    }
+    else if (interval >= 1) {
+      return interval + ' min ago'
     }
     return 'now';
   }
