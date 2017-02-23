@@ -21,11 +21,13 @@ class ChatArea extends React.Component {
       textFieldMsg: event.target.value
     });
   }
-  sendMessage (event) {
-    this.props.socket.emit('send message', {
-      room: 'main',
-      rawMessage: this.state.textFieldMsg
-    });
+  sendMessage (event) { //make only unless empty
+    if (this.state.textFieldMsg != '') {
+      this.props.socket.emit('send message', {
+        room: 'main',
+        rawMessage: this.state.textFieldMsg
+      });
+    }
     this.setState({
       textFieldMsg: ''
     });
@@ -33,10 +35,15 @@ class ChatArea extends React.Component {
   render () {
     return (
       <div className='chat-area'>
-        <TextField style={{'width': '80%'}}
-          hintText='' name='msg' onChange={this.onTextFieldChange.bind(this)} value={this.state.textFieldMsg} />
+        <TextField style={{'width': '80%'}} //make pressing enter in textfield click the button
+          hintText=''
+          name='msg'
+          onChange={this.onTextFieldChange.bind(this)}
+          value={this.state.textFieldMsg}/>
         <FlatButton style={{'width': '20%'}}
-          label='Send' onClick={this.sendMessage.bind(this)} />
+          name='chatBtn'
+          label='Send'
+          onClick={this.sendMessage.bind(this)} />
       </div>
     );
   }
