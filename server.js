@@ -17,6 +17,19 @@ io.on('connection', function (socket) {
     console.log(socket.user.username, 'said', msg);
     io.sockets.emit('new message', [{ 'username': socket.user.username, 'time': Date.now(), 'content': msg, 'seen': false }]);
   });
+  socket.on('connection', function (user) {
+    user.on('join', function(name){
+      users[user.id] = name;
+      user.emit('update', 'you have connected');
+      io.sockets.emit('update', name + ' has joined the server.')
+      io.sockets.emit('update-users', users);
+    })
+  });
+  socket.on('disconnect', function(){
+        io.sockets.emit('update', users[user.id] + ' has left the server.');
+        delete users[user.id];
+        io.sockets.emit('update-users', users);
+    });
 });
 
 io.listen(8081);

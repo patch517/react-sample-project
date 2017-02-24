@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import ChatArea from './ChatArea';
 import ChatDisplay from './ChatDisplay';
+import Users from './Users';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -18,6 +19,7 @@ class App extends React.Component {
   render () {
     return (
       <div className='app-cmpt'>
+        <Users socket={socket}/>
         <ChatDisplay socket={socket}/>
         <ChatArea socket={socket}/>
       </div>
