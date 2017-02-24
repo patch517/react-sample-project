@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
+import { socket } from '../network';
+
 class Users extends React.Component {
   constructor (props) {
     super(props);
@@ -13,7 +15,7 @@ class Users extends React.Component {
   }
   sendUsername (event) {
     if (this.state.textFieldUsername) {
-      this.props.socket.emit('connection', this.state.textFieldUsername);
+      socket.emit('connection', this.state.textFieldUsername);
     }
     this.setState({
       textFieldUsername: ''
@@ -43,7 +45,6 @@ class Users extends React.Component {
 }
 
 Users.propTypes = {
-  socket: React.PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {

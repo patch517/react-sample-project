@@ -3,31 +3,24 @@ import './App.styl';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ChatArea from './ChatArea';
-import ChatDisplay from './ChatDisplay';
-import Users from './Users';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-import io from 'socket.io-client';
-
-const socket = io('http://localhost:8081');
+import '../network';
 
 class App extends React.Component {
   render () {
     return (
       <div className='app-cmpt'>
-        <Users socket={socket}/>
-        <ChatDisplay socket={socket}/>
-        <ChatArea socket={socket}/>
+        {this.props.children}
       </div>
     );
   }
 }
 
 App.propTypes = {
+  children: React.PropTypes.object
 };
 
 const mapStateToProps = state => {
