@@ -15,11 +15,9 @@ class Users extends React.Component {
   }
   sendUsername (event) {
     if (this.state.textFieldUsername) {
-      socket.emit('connection', this.state.textFieldUsername);
+      socket.emit('join', this.state.textFieldUsername);
+      this.props.router.push('/chat');
     }
-    this.setState({
-      textFieldUsername: ''
-    });
   }
   onTextFieldChange (event) {
     this.setState({
@@ -35,12 +33,12 @@ class Users extends React.Component {
           name = 'user'
           value={this.state.textFieldUsername}
         />
-        <FlatButton label='Go' />
+        <FlatButton label='Go'
+          name='userBtn'
+          onClick={this.sendUsername.bind(this)}
+        />
       </div>
     );
-  }
-  checkUser (event) {
-
   }
 }
 

@@ -12,7 +12,7 @@ class RoutesComponent extends React.Component {
     return (
       <Router history={hashHistory}>
         <Route path='/' component={App}>
-          <IndexRedirect to='/chat' />
+          <IndexRedirect to='/login' />
           <Route path='login' component={Users} />
           <Route path='chat' component={ChatPage} />
         </Route>
