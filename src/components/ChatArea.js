@@ -37,13 +37,15 @@ class ChatArea extends React.Component {
   render () {
     return (
       <div className='chat-area'>
-        <TextField style={{'width': '80%', 'left': '8px'}} // make pressing enter in textfield click the button
+        <TextField ref={focusChatTextField}
+          style={{'width': '80%', 'left': '8px'}}
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}
           value={this.state.textFieldMsg}
           onKeyPress={this.handleKeyPress.bind(this)} />
-        <FlatButton style={{'width': '15%', 'left': '30px', 'top': '4px'}}
+        <FlatButton
+          style={{'width': '15%', 'left': '30px', 'top': '4px'}}
           name='chatBtn'
           label='Send'
           onClick={this.sendMessage.bind(this)} />
@@ -56,6 +58,10 @@ ChatArea.propTypes = {
   socket: React.PropTypes.object.isRequired,
   addMessages: React.PropTypes.func.isRequired
 };
+
+const focusChatTextField = input => {
+  input.focus();
+}
 
 const mapStateToProps = state => {
   return {

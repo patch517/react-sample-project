@@ -9,6 +9,10 @@ io.on('connection', function (socket) {
 
   console.log('Someone connected and given the username', socket.user.username);
 
+  socket.on('update', function (msg) { 
+    alert(msg) 
+  });
+
   io.sockets.emit('update-users', users);
   socket.on('send message', function (msg) {
     // TODO: Check if user is logged in
@@ -26,8 +30,9 @@ io.on('connection', function (socket) {
     socket.user.guest = false;
 
     socket.emit('update', 'you have connected');
+    socket.emit('gotochat');
 
-    io.sockets.emit('update', name + ' has joined the server.')
+    io.sockets.emit('update', username + ' has joined the server.')
     io.sockets.emit('update-users', users);
   });
   socket.on('disconnect', function () {
