@@ -37,15 +37,16 @@ class ChatArea extends React.Component {
   render () {
     return (
       <div className='chat-area'>
-        <TextField ref={focusChatTextField}
-          style={{'width': '80%', 'left': '8px'}}
+        <TextField ref={focusChatTextField} // fucks with loading other page, fix
+          style={{width: '80%', left: '8px'}}
+          inputStyle={{color: 'white'}}
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}
           value={this.state.textFieldMsg}
           onKeyPress={this.handleKeyPress.bind(this)} />
         <FlatButton
-          style={{'width': '15%', 'left': '30px', 'top': '4px'}}
+          style={{width: '15%', left: '30px', top: '4px', color: 'white'}}
           name='chatBtn'
           label='Send'
           onClick={this.sendMessage.bind(this)} />

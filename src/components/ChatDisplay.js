@@ -14,7 +14,7 @@ class ChatDisplay extends React.Component {
         </div>
       );
     }
-
+      // make overflow default to bottom
     return (
       <div className='chat-display'>
         {msgs}

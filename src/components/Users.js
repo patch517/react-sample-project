@@ -39,16 +39,20 @@ class Users extends React.Component {
     return (
       <div className='user-loginWrapper'>
         <div className='user-login'>
-          <TextField className='user-login_txtField'
+          <TextField
+            className='user-login_txtField'
             style={{width: '200px', height: '40px', textAlign: 'center'}}
-            inputStyle={{textAlign: 'center'}}
-            hintText='Enter username'
+            inputStyle={{textAlign: 'center', color: 'white'}}
+            hintText='Enter username' // align this
             onChange={this.onTextFieldChange.bind(this)}
             onKeyPress={this.handleKeyPress.bind(this)}
             name = 'user'
             value={this.state.textFieldUsername}
           />
-          <FlatButton label='Go'
+          <FlatButton
+            style={{color: 'white'}}
+            className='user-login_button'
+            label='Go'
             name='userBtn'
             onClick={this.sendUsername.bind(this)}
           />
