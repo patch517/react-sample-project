@@ -45,14 +45,14 @@ class ChatArea extends React.Component {
         <TextField ref={focusChatTextField}
           style={{width: '80%', left: '8px'}}
           inputStyle={{color: 'white'}}
-          underlineFocusStyle={{borderColor:'#ffd3a4'}}
+          underlineFocusStyle={{borderColor: '#ffd3a4'}}
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}
           value={this.state.textFieldMsg}
           onKeyPress={this.handleKeyPress.bind(this)} />
         <FlatButton
-          style={{width: '15%', left: '30px', top: '4px', color: 'white'}}
+          style={{width: '15%', left: '30px', top: '4px', color: '#ffd3a4'}}
           name='chatBtn'
           label='Send'
           onClick={this.sendMessage.bind(this)} />
