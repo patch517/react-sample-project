@@ -48,7 +48,7 @@ class LoginPage extends React.Component {
             style={{width: '200px', height: '40px', textAlign: 'center'}}
             inputStyle={{textAlign: 'center', color: 'white'}}
             hintText='Enter username'
-            hintStyle={{width:'100%', textAlign: 'center', color:'white'}}
+            hintStyle={{width: '100%', textAlign: 'center', color: 'white'}}
             onChange={this.onTextFieldChange.bind(this)}
             onKeyPress={this.handleKeyPress.bind(this)}
             name = 'user'
