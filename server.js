@@ -7,7 +7,7 @@ var users = [];
 io.on('connection', function (socket) {
   socket.user = { 'username': 'guest_person' + parseInt(Math.random() * 1000), 'guest': true };
 
-  console.log('Someone connected and given the username', socket.user.username);
+  console.log(socket.user.username, 'joined the server');
 
   socket.on('update', function (msg) { 
     alert(msg) 
@@ -26,6 +26,8 @@ io.on('connection', function (socket) {
     }
     users.push(username);
 
+    console.log(socket.user.username, 'connected as', username);
+
     socket.user.username = username;
     socket.user.guest = false;
 
@@ -40,6 +42,8 @@ io.on('connection', function (socket) {
       // user was never logged in
       return;
     }
+    console.log(socket.user.username, 'left the server');
+
     io.sockets.emit('update', socket.user.username + ' has left the server.');
 
     users.splice(users.indexOf(socket.user.username), 1); // remove from users array
