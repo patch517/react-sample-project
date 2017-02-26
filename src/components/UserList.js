@@ -1,3 +1,5 @@
+import './UserList.styl';
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -8,7 +10,7 @@ class UserList extends React.Component {
     for (var key in this.props.user) {
       users.push(
         <div key={key}>
-          <div className='msg-user'>{this.props.user[key].username}</div>
+          <div>{this.props.user[key].username}</div>
         </div>
       );
     }
@@ -16,7 +18,7 @@ class UserList extends React.Component {
       <div className='user-listWrapper'>
         <h3>Users Online</h3>
         <div className='user-list'>
-          {users}
+          <h1>{users}</h1>
         </div>
       </div>
     );
@@ -29,6 +31,7 @@ UserList.propTypes = {
 
 const mapStateToProps = state => {
   return {
+    user: state.sample.messages
   };
 };
 

@@ -1,3 +1,5 @@
+import './ChatArea.styl';
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -43,6 +45,7 @@ class ChatArea extends React.Component {
         <TextField ref={focusChatTextField}
           style={{width: '80%', left: '8px'}}
           inputStyle={{color: 'white'}}
+          underlineFocusStyle={{borderColor:'#ffd3a4'}}
           hintText=''
           name='msg'
           onChange={this.onTextFieldChange.bind(this)}

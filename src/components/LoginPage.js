@@ -47,6 +47,7 @@ class LoginPage extends React.Component {
             className='user-login_txtField'
             style={{width: '200px', height: '40px', textAlign: 'center'}}
             inputStyle={{textAlign: 'center', color: 'white'}}
+            underlineFocusStyle={{borderColor:'#ffd3a4'}}
             hintText='Enter username'
             hintStyle={{width: '100%', textAlign: 'center', color: 'white'}}
             onChange={this.onTextFieldChange.bind(this)}
