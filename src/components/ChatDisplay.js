@@ -21,9 +21,11 @@ class ChatDisplay extends React.Component {
       </div>
     );
   }
-  componentDidUpdate () {
-    var div = document.getElementById('chat-display');
-    div.scrollTop = div.scrollHeight - div.clientHeight;
+  componentDidUpdate (prevProps) {
+    if (this.props.messages !== prevProps.messages) {
+      var div = document.getElementById('chat-display');
+      div.scrollTop = div.scrollHeight - div.clientHeight;
+    }
   }
   componentDidMount () {
     this.timer = setInterval(function () {
