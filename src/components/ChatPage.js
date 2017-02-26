@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import ChatArea from './ChatArea';
 import ChatDisplay from './ChatDisplay';
+import UserList from './UserList';
 
 import { socket } from '../network';
 
@@ -11,6 +12,7 @@ class ChatPage extends React.Component {
     return (
       <div className='chat-page'>
         <ChatDisplay socket={socket}/>
+        <UserList socket={socket}/>
         <ChatArea socket={socket}/>
       </div>
     );

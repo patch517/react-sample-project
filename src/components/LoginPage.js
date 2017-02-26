@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 import { socket } from '../network';
 
-class Users extends React.Component {
+class LoginPage extends React.Component {
   constructor (props) {
     super(props);
     this.state = {textFieldUsername: ''};
@@ -36,14 +36,19 @@ class Users extends React.Component {
     }
   }
   render () {
+    const focusUserTextField = input => {
+      input && input.focus();
+    }
     return (
       <div className='user-loginWrapper'>
         <div className='user-login'>
           <TextField
+            ref={focusUserTextField}
             className='user-login_txtField'
             style={{width: '200px', height: '40px', textAlign: 'center'}}
             inputStyle={{textAlign: 'center', color: 'white'}}
-            hintText='Enter username' // align this
+            hintText='Enter username'
+            hintStyle={{width:'100%', textAlign: 'center', color:'white'}}
             onChange={this.onTextFieldChange.bind(this)}
             onKeyPress={this.handleKeyPress.bind(this)}
             name = 'user'
@@ -62,7 +67,7 @@ class Users extends React.Component {
   }
 }
 
-Users.propTypes = {
+LoginPage.propTypes = {
   router: React.PropTypes.object
 };
 
@@ -76,4 +81,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

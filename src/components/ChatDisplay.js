@@ -14,14 +14,17 @@ class ChatDisplay extends React.Component {
         </div>
       );
     }
-      // make overflow default to bottom
     return (
-      <div className='chat-display'>
+      <div id='chat-display'
+        className='chat-display'>
         {msgs}
       </div>
     );
   }
-
+  componentDidUpdate () {
+    var div = document.getElementById('chat-display');
+    div.scrollTop = div.scrollHeight - div.clientHeight;
+  }
   componentDidMount () {
     this.timer = setInterval(function () {
       this.forceUpdate();
@@ -58,9 +61,9 @@ class ChatDisplay extends React.Component {
     }
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
-      return interval + ' minutes ago'
+      return interval + ' mins ago'
     } else if (interval >= 1) {
-      return interval + ' minute ago'
+      return interval + ' min ago'
     }
     return 'now';
   }

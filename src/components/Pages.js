@@ -4,7 +4,7 @@ import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 
 import App from './App';
 
-import Users from './Users';
+import LoginPage from './LoginPage';
 import ChatPage from './ChatPage';
 
 class RoutesComponent extends React.Component {
@@ -13,7 +13,7 @@ class RoutesComponent extends React.Component {
       <Router history={hashHistory}>
         <Route path='/' component={App}>
           <IndexRedirect to='/login' />
-          <Route path='login' component={Users} />
+          <Route path='login' component={LoginPage} />
           <Route path='chat' component={ChatPage} />
         </Route>
       </Router>

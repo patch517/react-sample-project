@@ -35,9 +35,12 @@ class ChatArea extends React.Component {
     });
   }
   render () {
+    const focusChatTextField = input => {
+      input && input.focus();
+    }
     return (
       <div className='chat-area'>
-        <TextField ref={focusChatTextField} // fucks with loading other page, fix
+        <TextField ref={focusChatTextField}
           style={{width: '80%', left: '8px'}}
           inputStyle={{color: 'white'}}
           hintText=''
@@ -59,10 +62,6 @@ ChatArea.propTypes = {
   socket: React.PropTypes.object.isRequired,
   addMessages: React.PropTypes.func.isRequired
 };
-
-const focusChatTextField = input => {
-  input.focus();
-}
 
 const mapStateToProps = state => {
   return {
