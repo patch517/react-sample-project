@@ -16,15 +16,8 @@ class LoginPage extends React.Component {
   sendUsername (event) {
     if (this.state.textFieldUsername) {
       socket.emit('join', this.state.textFieldUsername);
-      this.props.router.push('/chat');
     }
   }
-/*  function (err) {
-    if (err) {
-      console.log(' does not exist');
-      socket.emit('my_error');
-    }
-  }*/
   onTextFieldChange (event) {
     this.setState({
       textFieldUsername: event.target.value

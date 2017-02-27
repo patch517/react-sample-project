@@ -2,6 +2,8 @@ import './ChatDisplay.styl';
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { addMessages } from '../reducer/sample';
+import { socket } from '../network';
 
 class ChatDisplay extends React.Component {
   render () {
@@ -33,6 +35,10 @@ class ChatDisplay extends React.Component {
     this.timer = setInterval(function () {
       this.forceUpdate();
     }.bind(this), 1000);
+    socket.off('new message');
+    socket.on('new message', function (newMessages) {
+      this.props.addMessages(newMessages);
+    }.bind(this));
   }
   componentWillUnmount () {
     clearInterval(this.timer);
@@ -74,8 +80,7 @@ class ChatDisplay extends React.Component {
 }
 
 ChatDisplay.propTypes = {
-  messages: React.PropTypes.array.isRequired,
-  socket: React.PropTypes.object.isRequired
+  messages: React.PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {
@@ -86,6 +91,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    addMessages: (arg) => dispatch(addMessages(arg))
   };
 }
 

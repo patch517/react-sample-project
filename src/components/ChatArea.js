@@ -6,18 +6,12 @@ import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
-import { addMessages } from '../reducer/sample';
-
 class ChatArea extends React.Component {
   constructor (props) {
     super(props);
     this.state = {textFieldMsg: ''};
   }
   componentDidMount () {
-    this.props.socket.off('new message');
-    this.props.socket.on('new message', function (newMessages) {
-      this.props.addMessages(newMessages);
-    }.bind(this));
   }
   onTextFieldChange (event) {
     this.setState({
