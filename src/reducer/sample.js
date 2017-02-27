@@ -5,14 +5,9 @@ const DEFAULT_STATE = {
   text: '',
   messages: [
     {
-      'time': 4,
+      'time': 0,
       'username': 'person',
-      'content': 'hi'
-    },
-    {
-      'username': 'man',
-      'time': 22,
-      'content': 'fuck off'
+      'content': 'test'
     }
   ],
   usernameList: []

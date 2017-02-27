@@ -14,6 +14,7 @@ class ChatArea extends React.Component {
     this.state = {textFieldMsg: ''};
   }
   componentDidMount () {
+    this.props.socket.off('new message');
     this.props.socket.on('new message', function (newMessages) {
       this.props.addMessages(newMessages);
     }.bind(this));

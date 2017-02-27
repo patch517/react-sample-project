@@ -17,7 +17,7 @@ class UserList extends React.Component {
     for (var key in this.props.users) {
       users.push(
         <div key={key}>
-          <div>{this.props.users[key]}</div>
+          <div><li><span>{this.props.users[key]}</span></li></div>
         </div>
       );
     }
