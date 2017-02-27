@@ -24,6 +24,13 @@ io.on('connection', function (socket) {
       // username is already in the users array, let user know that his username is taken
       return;
     }
+    var oldUsername = false;
+
+    if (!socket.user.guest) {
+      oldUsername = socket.user.username;
+      users.splice(users.indexOf(oldUsername), 1);
+    }
+
     users.push(username);
 
     console.log(socket.user.username, 'connected as', username);
@@ -34,7 +41,11 @@ io.on('connection', function (socket) {
     socket.emit('update', 'you have connected');
     socket.emit('gotochat');
 
-    io.sockets.emit('update', username + ' has joined the server.')
+    if (oldUsername) {
+      io.sockets.emit('update', oldUsername + ' has changed username to ' + username)
+    } else {
+      io.sockets.emit('update', username + ' has joined the server.')
+    }
     io.sockets.emit('update-users', users);
   });
   socket.on('disconnect', function () {
