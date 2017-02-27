@@ -10,13 +10,25 @@ class ChatDisplay extends React.Component {
     var msgs = [];
 
     for (var key in this.props.messages) {
-      msgs.push(
-        <div key={key} className='msg-parent'>
-          <div className='msg-time'>{this.timeSince(this.props.messages[key].time)} </div>
-          <div className='msg-user'>{this.props.messages[key].username}: </div>
-          <div className='msg-content'>{this.props.messages[key].content}</div>
-        </div>
-      );
+      switch (this.props.messages[key].type) {
+        case 'message':
+          msgs.push(
+            <div key={key} className='msg-parent'>
+              <div className='msg-time'>{this.timeSince(this.props.messages[key].time)} </div>
+              <div className='msg-user'>{this.props.messages[key].username}: </div>
+              <div className='msg-content'>{this.props.messages[key].content}</div>
+            </div>
+          );
+          break;
+        case 'update':
+          msgs.push(
+            <div key={key} className='update'>
+              <div className='update-time'>{this.timeSince(this.props.messages[key].time)}</div>
+              <div className='update-content'>{this.props.messages[key].content}</div>
+            </div>
+          );
+          break;
+      }
     }
     return (
       <div id='chat-display'

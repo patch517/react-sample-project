@@ -14,7 +14,7 @@ const DEFAULT_STATE = {
 };
 
 export const addMessages = (dat) => {
-  return { type: ADD_MESSAGES, messages: dat }
+  return { type: ADD_MESSAGES, message: dat }
 }
 
 export const setUsernameList = (dat) => {
@@ -27,7 +27,7 @@ export default function (state = DEFAULT_STATE, action) {
       return Object.assign({}, state, {
         messages: [
           ...state.messages,
-          ...action.messages
+          action.message
         ]
       });
     case SET_USERNAME_LIST:

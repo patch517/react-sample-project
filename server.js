@@ -19,7 +19,7 @@ io.on('connection', function (socket) {
   socket.on('send message', function (msg) {
     // TODO: Check if user is logged in
     console.log(socket.user.username, 'said', msg);
-    io.sockets.emit('new message', [{ 'username': socket.user.username, 'time': Date.now(), 'content': msg, 'seen': false }]);
+    io.sockets.emit('new message', { 'type': 'message', 'username': socket.user.username, 'time': Date.now(), 'content': msg, 'seen': false });
   });
   socket.on('join', function (username) {
     if (users.indexOf(username) !== -1) {
@@ -41,13 +41,13 @@ io.on('connection', function (socket) {
     socket.user.guest = false;
 
     socket.emit('user', socket.user);
-    socket.emit('update', 'you have connected');
+    socket.emit('new message', { 'type': 'update', 'time': Date.now(), 'content': 'you have connected' });
     socket.emit('goto', '/chat');
 
     if (oldUsername) {
-      io.sockets.emit('update', oldUsername + ' has changed username to ' + username)
+      io.sockets.emit('new message', { 'type': 'update', 'time': Date.now(), 'content': oldUsername + ' has changed username to ' + username })
     } else {
-      io.sockets.emit('update', username + ' has joined the server.')
+      io.sockets.emit('new message', { 'type': 'update', 'time': Date.now(), 'content': username + ' has joined the server.' })
     }
     io.sockets.emit('update-users', users);
   });
@@ -58,7 +58,7 @@ io.on('connection', function (socket) {
     }
     console.log(socket.user.username, 'left the server');
 
-    io.sockets.emit('update', socket.user.username + ' has left the server.');
+    io.sockets.emit('new message', { 'type': 'update', 'time': Date.now(), 'content': socket.user.username + ' has left the server.' });
 
     users.splice(users.indexOf(socket.user.username), 1); // remove from users array
 
