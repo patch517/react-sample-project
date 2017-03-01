@@ -39,7 +39,7 @@ class ChatDisplay extends React.Component {
   }
   changeTitle() {
     if (document.hasFocus()){
-      document.title=('Wintermute Client');
+      document.title=('Summerdeaf Client');
     }
     if (!document.hasFocus()){
       document.title=('New Messages');
@@ -55,7 +55,7 @@ class ChatDisplay extends React.Component {
     this.timer = setInterval(function () {
       this.forceUpdate();
     }.bind(this), 1000);
-    window.onfocus = function() {document.title=('Wintermute Client')};
+    window.onfocus = function() {document.title=('Summerdeaf Client')};
     socket.off('new message');
     socket.on('new message', function (newMessages) {
       this.props.addMessages(newMessages);
