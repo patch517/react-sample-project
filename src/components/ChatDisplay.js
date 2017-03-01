@@ -37,6 +37,14 @@ class ChatDisplay extends React.Component {
       </div>
     );
   }
+  changeTitle() {
+    if (document.hasFocus()){
+      document.title=('Wintermute Client');
+    }
+    if (!document.hasFocus()){
+      document.title=('New Messages');
+    }
+  }
   componentDidUpdate (prevProps) {
     if (this.props.messages !== prevProps.messages) {
       var div = document.getElementById('chat-display');
@@ -47,9 +55,11 @@ class ChatDisplay extends React.Component {
     this.timer = setInterval(function () {
       this.forceUpdate();
     }.bind(this), 1000);
+    window.onfocus = function() {document.title=('Wintermute Client')};
     socket.off('new message');
     socket.on('new message', function (newMessages) {
       this.props.addMessages(newMessages);
+      this.changeTitle();
     }.bind(this));
   }
   componentWillUnmount () {
@@ -90,7 +100,6 @@ class ChatDisplay extends React.Component {
     return 'now';
   }
 }
-
 ChatDisplay.propTypes = {
   messages: React.PropTypes.array.isRequired
 };
