@@ -14,9 +14,7 @@ class LoginPage extends React.Component {
   componentDidMount () {
   }
   sendUsername (event) {
-    if (this.state.textFieldUsername.length > 16) {
-      alert('Username too long.');
-    } else if (this.state.textFieldUsername && this.state.textFieldUsername.length <= 16) {
+    if (this.state.textFieldUsername && this.state.textFieldUsername.length <= 16) {
       socket.emit('join', this.state.textFieldUsername);
     }
   }
@@ -48,6 +46,7 @@ class LoginPage extends React.Component {
             onChange={this.onTextFieldChange.bind(this)}
             onKeyPress={this.handleKeyPress.bind(this)}
             name = 'user'
+            maxLength = '16'
             value={this.state.textFieldUsername}
           />
           <FlatButton
