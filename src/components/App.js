@@ -9,8 +9,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-import '../network';
-
 class App extends React.Component {
   componentDidMount () {
     socket.on('goto', function (page) {
@@ -27,7 +25,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.object
+  children: React.PropTypes.object,
+  router: React.PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {

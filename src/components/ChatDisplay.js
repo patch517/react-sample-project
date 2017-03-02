@@ -37,14 +37,14 @@ class ChatDisplay extends React.Component {
       </div>
     );
   }
-  changeTitle() {
-    if (document.hasFocus()){
-      document.title=('Summerdeaf Client');
-      document.querySelector("link[rel='shortcut icon']").href = "http://i.imgur.com/vK1uLpy.png";
+  changeTitle () {
+    if (document.hasFocus()) {
+      document.title = ('Summerdeaf Client');
+      document.querySelector("link[rel='shortcut icon']").href = 'http://i.imgur.com/vK1uLpy.png';
     }
-    if (!document.hasFocus()){
-      document.title=('New Messages');
-      document.querySelector("link[rel='shortcut icon']").href = "http://i.imgur.com/N9Hf1nq.png";
+    if (!document.hasFocus()) {
+      document.title = ('New Messages');
+      document.querySelector("link[rel='shortcut icon']").href = 'http://i.imgur.com/N9Hf1nq.png';
     }
   }
   componentDidUpdate (prevProps) {
@@ -57,9 +57,9 @@ class ChatDisplay extends React.Component {
     this.timer = setInterval(function () {
       this.forceUpdate();
     }.bind(this), 1000);
-    window.onfocus = function() {
-      document.title=('Summerdeaf Client');
-      document.querySelector("link[rel='shortcut icon']").href = "http://i.imgur.com/vK1uLpy.png";
+    window.onfocus = function () {
+      document.title = ('Summerdeaf Client');
+      document.querySelector("link[rel='shortcut icon']").href = 'http://i.imgur.com/vK1uLpy.png';
     };
     socket.off('new message');
     socket.on('new message', function (newMessages) {

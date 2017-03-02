@@ -18,7 +18,7 @@ export const addMessages = (dat) => {
 }
 
 export const setUsernameList = (dat) => {
-  return { type: SET_USERNAME_LIST, usernameList: dat }   
+  return { type: SET_USERNAME_LIST, usernameList: dat }
 }
 
 export default function (state = DEFAULT_STATE, action) {

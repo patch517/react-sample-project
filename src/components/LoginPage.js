@@ -16,11 +16,9 @@ class LoginPage extends React.Component {
   sendUsername (event) {
     if (this.state.textFieldUsername.length > 16) {
       alert('Username too long.');
-    }
-    else if (this.state.textFieldUsername && this.state.textFieldUsername.length <= 16) {
+    } else if (this.state.textFieldUsername && this.state.textFieldUsername.length <= 16) {
       socket.emit('join', this.state.textFieldUsername);
     }
-  }
   }
   onTextFieldChange (event) {
     this.setState({
