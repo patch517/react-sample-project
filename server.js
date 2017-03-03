@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
     io.sockets.emit('new message', { 'type': 'message', 'username': socket.user.username, 'time': Date.now(), 'content': msg, 'seen': false });
   });
   socket.on('join', function (username) {
-    if (users.indexOf(username) !== -1) {
+    if (users.indexOf(username) !== -1 || username.length > 16) {
       socket.emit('goto', '/login');
       return;
     }

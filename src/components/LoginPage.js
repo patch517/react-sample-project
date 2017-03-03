@@ -14,7 +14,7 @@ class LoginPage extends React.Component {
   componentDidMount () {
   }
   sendUsername (event) {
-    if (this.state.textFieldUsername && this.state.textFieldUsername.length <= 16) {
+    if (this.state.textFieldUsername) {
       socket.emit('join', this.state.textFieldUsername);
     }
   }
